@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     curl https://releases.hashicorp.com/consul-terraform-sync/0.4.3/consul-terraform-sync_0.4.3_darwin_amd64.zip -o cts-esg-sample-code/cts/cts.zip
 fi
-unzip cts-esg-sample-code/cts/cts.zip
+unzip cts-esg-sample-code/cts/cts.zip -d cts-esg-sample-code/cts/
 rm -rf cts-esg-sample-code/cts/cts.zip
 
 echo "##################################################################"
@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_linux_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_darwin_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
-unzip cts-esg-sample-code/pre-req/tf.zip
+unzip cts-esg-sample-code/pre-req/tf.zip -d cts-esg-sample-code/pre-req/
 rm -rf cts-esg-sample-code/pre-req/tf.zip
 
 echo "##################################################################"
