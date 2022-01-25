@@ -1,0 +1,9 @@
+.DS_Store
+ansible/venv
+ansible/collections
+
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+.terraform.lock.hcl
+tf.plan
