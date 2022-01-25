@@ -23,6 +23,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_linux_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_darwin_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
+fi
 unzip cts-esg-sample-code/pre-req/tf.zip -d cts-esg-sample-code/pre-req/
 rm -rf cts-esg-sample-code/pre-req/tf.zip
 
