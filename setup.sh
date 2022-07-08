@@ -9,9 +9,9 @@ echo "##################################################################"
 echo "# $(tput setaf 2)Downloading Consul-Terraform-Sync (CTS) binary.... $(tput setaf 7)#############"
 echo "##################################################################"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    curl https://releases.hashicorp.com/consul-terraform-sync/0.4.3/consul-terraform-sync_0.4.3_linux_amd64.zip -o cts-esg-sample-code/cts/cts.zip
+    curl https://releases.hashicorp.com/consul-terraform-sync/0.6.0/consul-terraform-sync_0.6.0_linux_amd64.zip -o cts-esg-sample-code/cts/cts.zip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    curl https://releases.hashicorp.com/consul-terraform-sync/0.4.3/consul-terraform-sync_0.4.3_darwin_amd64.zip -o cts-esg-sample-code/cts/cts.zip
+    curl https://releases.hashicorp.com/consul-terraform-sync/0.6.0/consul-terraform-sync_0.6.0_darwin_amd64.zip -o cts-esg-sample-code/cts/cts.zip
 fi
 unzip cts-esg-sample-code/cts/cts.zip -d cts-esg-sample-code/cts/
 rm -rf cts-esg-sample-code/cts/cts.zip
@@ -20,9 +20,9 @@ echo "##################################################################"
 echo "# $(tput setaf 2)Downloading Terraform binary.... $(tput setaf 7)###############################"
 echo "##################################################################"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_linux_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
+    curl https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    curl https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_darwin_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
+    curl https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_darwin_amd64.zip -o cts-esg-sample-code/pre-req/tf.zip
 fi
 unzip cts-esg-sample-code/pre-req/tf.zip -d cts-esg-sample-code/pre-req/
 rm -rf cts-esg-sample-code/pre-req/tf.zip
