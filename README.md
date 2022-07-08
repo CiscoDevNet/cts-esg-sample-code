@@ -1,4 +1,4 @@
-# Sample Code for Consul-Terraform-Sync Learning Lab
+# Sample Code for ACI & Consul-Terraform-Sync Learning Lab
 
 This repository contains files for the CTS LL hosted within the ACI automation learning track on [developer.cisco.com](https://developer.cisco.com).  This sample code is meant to showcase the ease of setup for using CTS to automatically add/remove application hosts from an Endpoint Security Group (ESG) within an ACI tenant.
 
@@ -8,11 +8,9 @@ This repository contains files for the CTS LL hosted within the ACI automation l
   - ESGs were introduced in ACI v5.0.  Previous versions do not have support for this construct
   - The [reservable ACI v5.2 sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/4eaa9878-3e74-4105-b26a-bd83eeaa6cd9?diagramType=Topology) through DevNet Sandbox is also supported
 - System capable of supporting the CTS binary.  As of the initial publication of this lab, Linux (`386`, `amd64`, `arm`, and `arm64`), macOS (`amd64` only, no M1/ARM), Solaris, and Windows (`386` and `amd64`) are supported
-  - The automatic installation script (`setup.sh`) provided assumes either `linux-amd64` or `macOS-amd64` are in use.  If running on a system differing from one of thse architectures, please ensure to download the correct binary [here](https://releases.hashicorp.com/consul-terraform-sync/0.4.3/)
+  - The automatic installation script (`setup.sh`) provided assumes either `linux-amd64` or `macOS-amd64` are in use and will download the appropriate binary for one of those two systems.  If running on a system differing from one of thse architectures, please ensure to download the correct binary [here](https://releases.hashicorp.com/consul-terraform-sync/0.4.3/)
   - The jumphost included with the DevNet reservable sandbox is supported
 - The CTS input file assumes a specific set of configuration applied to the ACI fabric.  This can be applied manually or using the included Terraform file to apply the configuration.
-  - The installation script (`setup.sh`) assumes `linux-amd64` or `macOS-amd64` are in use and will download the appropriate binary for one of those two systems.  If using a system outside of the two mentioned and you desire to use the Terraform configuration, please ensure that you download the correct binary [here](https://terraform.io/downloads)
-  - The jumphost included with the DevNet reservable sandbox is supported
 
 ## Repository Contents
 
@@ -29,14 +27,14 @@ provider "aci" {
 }
 ```
 
-If you wish to perform this on a different fabric, please modify the file prior to using.
+If you wish to perform this on a different fabric, please modify the file prior to use.
 
 ### `docker`
 
 This folder contains the required Dockerfile and entrypoint script for the application container used within this lab.  This container uses `nginx` as its base and installs `consul`.  The `docker-entrypoint.sh` script configures the required Consul parameters to register with the server.  Once the container has been built, this folder will not be used for any activity within the lab.
 
 ### `cts`
-The majority of the lab will be performed using the contents of this folder, which each of the files listed performing the following functions
+The majority of the lab will be performed using the content of this folder, which each of the files listed performing the following functions
 
 - `input.tf`
   - Defines the variables used within the Terraform actions performed using the CTS binary.  These can be changed as desired for your implementation, but are defaulted to the values used within the `pre-req` folder for tenant, VRF, and application profile names.  If changes are desired, ensure that the information under `pre-req/main.tf` aligns with what is in this file
@@ -56,8 +54,7 @@ A setup script has been added to this repository to speed the time to deployment
 1. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/CiscoDevNet/cts-esg-sample-code/main/setup.sh)"`
 2. `cd cts-esg-sample-code/pre-req`
 3. `./terraform init`
-4. `./terraform plan -out tf.plan`
-5. `./terraform apply "tf.plan"`
+5. `./terraform apply -auto-approve`
 6. `cd ../cts/`
 7. `./consul-srv-start.sh`
 8. `./cts-start.sh`
@@ -77,4 +74,4 @@ Viewing the Consul UI should now indicate a green check mark next to the "App" s
 
 To break out of the running container -- you can use the `<CTRL-P><CTRL-Q>` key combination.  Once there, you can start the second container using `./app02-start.sh` and following the same process to instantiate the `nginx` service on this container.
 
-To verify the destroy action, you can use the `app-exec.sh` script to log into the desired container and invoke `service nginx stop` to stop the  `nginx` service, which will cause the Consul response for that container to fail and it will be removed from the ESG using the CTS actions.
+To verify the destroy action, you can use the `app-exec.sh` script to log into the desired container and invoke `service nginx stop` to stop the  `nginx` service, which will cause the Consul response for that container to fail and it will be removed from the ESG using the CTS actions. If no webserver is up in the Consul service, the whole ESG will be removed.
