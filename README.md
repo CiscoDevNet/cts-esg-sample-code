@@ -51,7 +51,7 @@ The majority of the lab will be performed using the content of this folder, whic
 
 A setup script has been added to this repository to speed the time to deployment
 
-1. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/CiscoDevNet/cts-esg-sample-code/master/setup.sh)"`
+1. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/CiscoDevNet/cts-esg-sample-code/main/setup.sh)"`
 2. `cd cts-esg-sample-code/pre-req`
 3. `./terraform init`
 5. `./terraform apply -auto-approve`
